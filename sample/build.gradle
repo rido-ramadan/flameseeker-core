@@ -6,7 +6,7 @@ android {
     compileSdkVersion compileSDK
 
     defaultConfig {
-        applicationId "com.edgardrake.flameseeker.sample"
+        applicationId "com.edgardrake.flameseeker.core.sample"
         minSdkVersion minSDK
         targetSdkVersion targetSDK
         versionCode rootProject.buildNumber

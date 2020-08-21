@@ -1,4 +1,4 @@
-package com.edgardrake.flameseeker.core
+package com.edgardrake.flameseeker.core.sample
 
 import org.junit.Test
 

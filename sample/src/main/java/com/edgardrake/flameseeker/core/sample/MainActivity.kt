@@ -1,7 +1,7 @@
-package com.edgardrake.flameseeker.sample
+package com.edgardrake.flameseeker.core.sample
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.edgardrake.flameseeker.core.utils.replaceText
 import com.edgardrake.flameseeker.core.utils.setTextListener
 import com.edgardrake.flameseeker.core.utils.showDebug
