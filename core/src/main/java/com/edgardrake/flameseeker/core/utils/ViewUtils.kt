@@ -5,6 +5,7 @@ import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import com.edgardrake.flameseeker.core.R
 
@@ -37,6 +38,16 @@ fun TextView.setTextListener(delay: Long = 0, listener: (text: CharSequence?) ->
             }
         }
     })
+}
+
+/**
+ * Set the text inside [EditText] to the specified [text], while also ensuring that the cursor is at
+ * the end of the text instead of start from the beginning again when [EditText.setText] is used.
+ * If [text] is null, it will be replaced with empty string instead.
+ */
+fun EditText.replaceText(text: CharSequence?) {
+    setText("")
+    text?.let { append(it) }
 }
 
 var View.visible: Boolean
