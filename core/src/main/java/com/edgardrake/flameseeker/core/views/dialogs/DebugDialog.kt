@@ -15,16 +15,17 @@ import kotlinx.android.synthetic.main.vh_key_value.view.*
 /**
  * Created by Rido Ramadan : rido-ramadan (email: rido.ramadan@gmail.com) on 21-Aug-20
  */
-class DebugDialog(
+class DebugDialog @JvmOverloads constructor(
     context: Context,
     entries: List<Pair<String?, String?>>,
-    title: String? = null
+    title: String? = null,
+    lhs: Int? = null,
+    rhs: Int? = null
 ) {
-
     init {
         val layout = LayoutInflater.from(context)
             .inflate(R.layout.dialog_debug, null, false).apply {
-                Adapter(entries).attach(recyclerView, isRenderDivider = false)
+                Adapter(entries, lhs, rhs).attach(recyclerView, isRenderDivider = false)
             }
 
         AlertDialog.Builder(context)
@@ -36,10 +37,14 @@ class DebugDialog(
     }
 
 
-    private class Adapter(dataset: List<Pair<String?, String?>>) :
-        HomogenousLinearAdapter<Pair<String?, String?>, EntryHolder>(dataset.toMutableList()) {
+    private class Adapter @JvmOverloads constructor(
+        dataset: List<Pair<String?, String?>>,
+        private val lhs: Int? = null,
+        private val rhs: Int? = null
+    ) : HomogenousLinearAdapter<Pair<String?, String?>, EntryHolder>(dataset.toMutableList()) {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = EntryHolder(parent)
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+            EntryHolder(parent, lhs, rhs)
 
         override fun onBindViewHolder(
             holder: EntryHolder,
@@ -55,21 +60,22 @@ class DebugDialog(
 
     private class EntryHolder @JvmOverloads constructor(
         view: View,
-        keyWidth: Int? = null,
-        valueWidth: Int? = null
+        lhs: Int? = null,
+        rhs: Int? = null
     ) : RecyclerView.ViewHolder(view) {
 
         @JvmOverloads
-        constructor(parent: ViewGroup, keyWidth: Int? = null, valueWidth: Int? = null) : this(
-            LayoutInflater.from(parent.context).inflate(R.layout.vh_key_value, parent, false)
+        constructor(parent: ViewGroup, lhs: Int? = null, rhs: Int? = null) : this(
+            LayoutInflater.from(parent.context).inflate(R.layout.vh_key_value, parent, false),
+            lhs, rhs
         )
 
         init {
-            keyWidth?.let { weight ->
+            lhs?.let { weight ->
                 (itemView.key.layoutParams as LinearLayout.LayoutParams).weight = weight.toFloat()
             }
 
-            valueWidth?.let { weight ->
+            rhs?.let { weight ->
                 (itemView.value.layoutParams as LinearLayout.LayoutParams).weight = weight.toFloat()
             }
         }
