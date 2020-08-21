@@ -29,8 +29,11 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
     implementation "androidx.core:core-ktx:$androidCore"
     implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "androidx.recyclerview:recyclerview:$recycler"
+
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test.ext:junit:$xJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCore"
