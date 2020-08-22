@@ -21,7 +21,7 @@ Module level `build.gradle` (e.g: `app/build.gradle`)
 ```gradle
 dependencies {
     ...
-    implementation "com.github.rido-ramadan:flameseeker-core:0.2.0" // << Add this line
+    implementation "com.github.rido-ramadan:flameseeker-core:0.2.1" // << Add this line
     ...
 }
 ```
@@ -29,11 +29,11 @@ dependencies {
 #   Features
 *   Instant DP/SP to Pixel conversion
     ```kotlin
-    // Screen density is 420dpi
-    val margin: Int     = 10.dp  // 20
-    val textSize: Int   = 14.sp  // 28
-    val padding: Int    = "8 dp".toDP()  // 16
-    val titleSize: Int  = "18sp".toSP()  // 36
+    // Screen density is 420dpi, density is 2.75x
+    val margin: Int     = 100.dp  // 275
+    val textSize: Int   = 14.sp  // 38 (28.5)
+    val padding: Int    = "8 dp".toDP()  // 22
+    val titleSize: Int  = "18sp".toSP()  // 49 (49.5)
     ```
 
 *   Easy text listener with debouncing support (in milliseconds)
