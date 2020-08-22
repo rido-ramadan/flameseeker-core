@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.vh_key_value.view.*
  */
 class DebugDialog @JvmOverloads constructor(
     context: Context,
-    entries: List<Pair<String?, String?>>,
+    entries: List<Pair<String?, Any?>>,
     title: String? = null,
     lhs: Int? = null,
     rhs: Int? = null
@@ -38,10 +38,10 @@ class DebugDialog @JvmOverloads constructor(
 
 
     private class Adapter @JvmOverloads constructor(
-        dataset: List<Pair<String?, String?>>,
+        dataset: List<Pair<String?, Any?>>,
         private val lhs: Int? = null,
         private val rhs: Int? = null
-    ) : HomogenousLinearAdapter<Pair<String?, String?>, EntryHolder>(dataset.toMutableList()) {
+    ) : HomogenousLinearAdapter<Pair<String?, Any?>, EntryHolder>(dataset.toMutableList()) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             EntryHolder(parent, lhs, rhs)
@@ -49,11 +49,11 @@ class DebugDialog @JvmOverloads constructor(
         override fun onBindViewHolder(
             holder: EntryHolder,
             position: Int,
-            data: Pair<String?, String?>?
+            data: Pair<String?, Any?>?
         ) {
             holder.apply {
                 key = data?.first
-                value = data?.second
+                value = data?.second.toString()
             }
         }
     }

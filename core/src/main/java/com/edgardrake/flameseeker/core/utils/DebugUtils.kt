@@ -12,10 +12,10 @@ fun showDebug(
     title: String? = null,
     lhs: Int? = null,
     rhs: Int? = null,
-    entries: List<Pair<String?, String?>>
+    entries: List<Pair<String?, Any?>>
 ) {
    DebugDialog(context, entries, title, lhs, rhs)
 }
 
-fun showDebug(context: Context, entries: List<Pair<String?, String?>>) =
+fun showDebug(context: Context, entries: List<Pair<String?, Any?>>) =
     showDebug(context, null, null, null, entries)

@@ -5,6 +5,9 @@ import android.os.Bundle
 import com.edgardrake.flameseeker.core.utils.replaceText
 import com.edgardrake.flameseeker.core.utils.setTextListener
 import com.edgardrake.flameseeker.core.utils.showDebug
+import com.edgardrake.flameseeker.core.utils.toDP
+import com.edgardrake.flameseeker.core.utils.toSP
+import com.edgardrake.flameseeker.core.utils.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.title = "Debug Dialog Playground"
 
         key.setTextListener { text ->
             text.toString().toIntOrNull()?.let {
@@ -48,15 +52,32 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val lhs = key.text.toString().toIntOrNull()
             val rhs = value.text.toString().toIntOrNull()
+            val title = titleText.text?.toString()
+            debugClickCounter++
 
             showDebug(this,
-                title = titleText.text?.toString(),
+                title = title,
                 lhs = lhs,
                 rhs = rhs,
-                entries = (1 .. 10).toList().map {
-                    "key-$it" to "value-$it"
-                }
+                entries = listOf(
+                    "100dp" to "${"100dp".toDP()}px",
+                    "100sp" to "${"100sp".toSP()}px",
+                    "10 dp" to "${"10 dp".toDP()}px",
+                    "10 sp" to "${"10 sp".toSP()}px",
+                )
             )
         }
+
+        toastButton.setOnClickListener {
+            val lhs = key.text.toString().toIntOrNull()
+            val rhs = value.text.toString().toIntOrNull()
+            val title = titleText.text?.toString()
+            toastClickCounter++
+
+            toast("key: $lhs, value: $rhs, title: $title\npressed: $toastClickCounter")
+        }
     }
+
+    private var debugClickCounter = 0
+    private var toastClickCounter = 0
 }

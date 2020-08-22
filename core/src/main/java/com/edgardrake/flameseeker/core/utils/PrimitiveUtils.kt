@@ -12,6 +12,20 @@ fun CharSequence?.isDP(): Boolean = this?.matches(Regex("\\d+(dp)")) ?: false
 
 fun CharSequence?.isSP(): Boolean = this?.matches(Regex("\\d+(sp)")) ?: false
 
-fun CharSequence?.toDP(): Int? = this.toString().toIntOrNull()?.dp
+fun CharSequence?.toDP(): Int? {
+    this?.let {
+        Regex("(\\d+)\\s*(dp)").find(this)?.let { match ->
+            val (number, _) = match.destructured
+            return number.toInt().dp
+        }
+    } ?: return null
+}
 
-fun CharSequence?.toSP(): Int? = this.toString().toIntOrNull()?.sp
+fun CharSequence?.toSP(): Int? {
+    this?.let {
+        Regex("(\\d+)\\s*(sp)").find(this)?.let { match ->
+            val (number, _) = match.destructured
+            return number.toInt().sp
+        }
+    } ?: return null
+}
