@@ -16,6 +16,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        testOptions {
+            unitTests.includeAndroidResources = true
+        }
     }
 
     buildTypes {
@@ -35,6 +39,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recycler"
 
     testImplementation "junit:junit:$junit"
+    testImplementation "io.mockk:mockk:$mockk"
     androidTestImplementation "androidx.test.ext:junit:$xJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCore"
 }
