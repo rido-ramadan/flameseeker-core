@@ -1,10 +1,12 @@
 package com.edgardrake.flameseeker.core.sample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.edgardrake.flameseeker.core.utils.dp
 import com.edgardrake.flameseeker.core.utils.replaceText
 import com.edgardrake.flameseeker.core.utils.setTextListener
 import com.edgardrake.flameseeker.core.utils.showDebug
+import com.edgardrake.flameseeker.core.utils.sp
 import com.edgardrake.flameseeker.core.utils.toDP
 import com.edgardrake.flameseeker.core.utils.toSP
 import com.edgardrake.flameseeker.core.utils.toast
@@ -60,10 +62,12 @@ class MainActivity : AppCompatActivity() {
                 lhs = lhs,
                 rhs = rhs,
                 entries = listOf(
+                    "1000dp" to "${1000.dp}px",
+                    "1000sp" to "${1000.sp}px",
                     "100dp" to "${"100dp".toDP()}px",
                     "100sp" to "${"100sp".toSP()}px",
                     "10 dp" to "${"10 dp".toDP()}px",
-                    "10 sp" to "${"10 sp".toSP()}px",
+                    "10 sp" to "${"10 sp".toSP()}px"
                 )
             )
         }

@@ -1,10 +1,7 @@
 package com.edgardrake.flameseeker.core.utils
 
-import android.content.res.Resources
 import io.mockk.every
-import io.mockk.mockk
 import io.mockk.mockkObject
-import io.mockk.mockkStatic
 import io.mockk.unmockkAll
 import org.junit.AfterClass
 import org.junit.Assert.assertEquals
@@ -19,13 +16,9 @@ class ResUtilsTest {
     companion object {
         @JvmStatic @BeforeClass
         fun setUpClass() {
-            // Resource must be mocked first in order to properly mock SystemMetrics constructor
-            mockkStatic(Resources::class)
-            every { Resources.getSystem() } returns mockk(relaxed = true)
-
             mockkObject(SystemMetrics)
-            every { SystemMetrics.DP } returns 2
-            every { SystemMetrics.SP } returns 3
+            every { SystemMetrics.DP } returns 2.75f
+            every { SystemMetrics.SP } returns 3.0f
         }
 
         @JvmStatic @AfterClass
@@ -35,12 +28,12 @@ class ResUtilsTest {
     }
 
     @Test
-    fun `10dp is 20px`() {
-        assertEquals(10.dp, 20)
+    fun `10dp is 28px`() {
+        assertEquals(10.dp, 28)
     }
 
     @Test
-    fun `14sp is 42px`() {
-        assertEquals(14.sp, 42)
+    fun `10sp is 30px`() {
+        assertEquals(10.sp, 30)
     }
 }
