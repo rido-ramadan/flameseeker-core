@@ -21,7 +21,7 @@ Module level `build.gradle` (e.g: `app/build.gradle`)
 ```gradle
 dependencies {
     ...
-    implementation "com.github.rido-ramadan:flameseeker-core:0.2.1" // << Add this line
+    implementation "com.github.rido-ramadan:flameseeker-core:0.2.2" // << Add this line
     ...
 }
 ```
