@@ -1,3 +1,4 @@
+@file:JvmName("ViewUtils")
 package com.edgardrake.flameseeker.core.utils
 
 import android.content.Context

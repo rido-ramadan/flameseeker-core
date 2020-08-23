@@ -1,3 +1,4 @@
+@file:JvmName("PrimitiveUtils")
 package com.edgardrake.flameseeker.core.utils
 
 /**

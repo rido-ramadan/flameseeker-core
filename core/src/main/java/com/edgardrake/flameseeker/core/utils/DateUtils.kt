@@ -1,3 +1,4 @@
+@file:JvmName("DateUtils")
 package com.edgardrake.flameseeker.core.utils
 
 import java.util.Date
