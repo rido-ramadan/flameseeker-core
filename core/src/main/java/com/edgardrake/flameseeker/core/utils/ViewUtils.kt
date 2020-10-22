@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.edgardrake.flameseeker.core.R
 
 /**
@@ -68,4 +69,12 @@ var View.visible: Boolean
  */
 fun Context.toast(message: String?, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, duration).show()
+}
+
+/**
+ * Simplify toast making, just pass [message], while [duration] become
+ * optional with default value of [Toast.LENGTH_SHORT]
+ */
+fun Fragment.toast(message: String?, duration: Int = Toast.LENGTH_SHORT) {
+    requireActivity().toast(message, duration)
 }
